@@ -8,22 +8,29 @@ branches:
 
 git:
   submodules: true
-  
-matrix:
-  include:
-    - os: linux
-      dist: xenial
-    - os: linux
-      dist: bionic
 
+
+env:
+  global:
+    - EPICS_PATH=${TRAVIS_BUILD_DIR}/epics_env
+
+  matrix:
+    include:
+      - os: linux
+        dist: xenial
+      - os: linux
+        dist: bionic
+
+    
       
 before_install:
   - sudo apt update
+  - bash .ci/setup_packages.bash
   - bash .ci/ethercat.bash
   - bash .ci/setup_repo.bash
   - bash .ci/setup_epics_base.bash
   
 install:
-  - source $HOME/epics_env/setEpicsEnv.bash
+  - source $EPICS_PATH/setEpicsEnv.bash
   
 

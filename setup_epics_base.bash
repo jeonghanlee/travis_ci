@@ -1,12 +1,12 @@
 #!/bin/bash
 
-mkdir -p $HOME/epics_env
-cd $HOME/epics_env
+mkdir -p ${EPICS_PATH}
+cd ${EPICS_PATH}
 repo init -u https://github.com/jeonghanlee/epics_manifest.git
 repo sync --no-clone-bundle
 
-bash pkg.bash -y 
+bash pkg.bash -y
 
 make init
-make base
-make modules
+make -s base
+make -s modules
