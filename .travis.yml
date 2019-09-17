@@ -7,7 +7,7 @@ branches:
     - master
 
 git:
-  submodules: true
+  submodules: false
   
 matrix:
   include:
