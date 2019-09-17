@@ -1,0 +1,29 @@
+sudo: enabled
+
+language: generic
+
+branches:
+  only:
+    - master
+
+git:
+  submodules: false
+  
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+    - os: linux
+      dist: bionic
+
+      
+before_install:
+  - sudo apt update
+  - bash .ci/ethercat.bash
+  - bash .ci/setup_repo.bash
+  - bash .ci/setup_epics_base.bash
+  
+install:
+  - source $HOME/epics_env/setEpicsEnv.bash
+  
+
