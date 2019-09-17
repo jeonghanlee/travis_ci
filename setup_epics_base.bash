@@ -8,5 +8,5 @@ repo sync --no-clone-bundle
 bash pkg.bash -y
 
 make init
-make -s base -j
-make -s modules
+make -s base
+make -s modules 
