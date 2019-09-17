@@ -13,6 +13,8 @@ git:
 env:
   global:
     - EPICS_PATH=${TRAVIS_BUILD_DIR}/epics_env
+    - EPICS_BASE=${EPICS_PATH}/epics-base
+    - EPICS_MODULES=${EPICS_PATH}/epics-modules
 
   matrix:
     include:
@@ -32,5 +34,10 @@ before_install:
   
 install:
   - source $EPICS_PATH/setEpicsEnv.bash
-  
+  - echo "ASYN=${EPICS_MODULES/asyn" >  configure/RELEASE.local
+  - echo "EPICS_BASE=${EPICS_BASE}" >>  configure/RELEASE.local
+
+script:
+  - make -s  
+
 
