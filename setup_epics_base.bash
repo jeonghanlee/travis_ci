@@ -5,7 +5,7 @@ cd $HOME/epics_env
 repo init -u https://github.com/jeonghanlee/epics_manifest.git
 repo sync --no-clone-bundle
 
-bash pkg.bash
+bash pkg.bash -y 
 
 make init
 make base
