@@ -15,6 +15,7 @@ env:
     - EPICS_PATH=${TRAVIS_BUILD_DIR}/epics_env
     - EPICS_BASE=${EPICS_PATH}/epics-base
     - EPICS_MODULES=${EPICS_PATH}/epics-modules
+    - MAKEFLAGS="-j 2"
 
 matrix:
   include:
@@ -36,8 +37,9 @@ install:
   - source $EPICS_PATH/setEpicsEnv.bash
   - echo "ASYN=${EPICS_MODULES/asyn" >  configure/RELEASE.local
   - echo "EPICS_BASE=${EPICS_BASE}" >>  configure/RELEASE.local
+  - cat ${TRAVIS_BUILD_DIR}/configure/RELEASE.local
+  - make
 
-script:
-  - make -s  
-
-
+after_success:
+  - tree ${TRAVIS_BUILD_DIR}
+  
