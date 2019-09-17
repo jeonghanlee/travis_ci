@@ -16,12 +16,12 @@ env:
     - EPICS_BASE=${EPICS_PATH}/epics-base
     - EPICS_MODULES=${EPICS_PATH}/epics-modules
 
-  matrix:
-    include:
-      - os: linux
-        dist: xenial
-      - os: linux
-        dist: bionic
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+    - os: linux
+      dist: bionic
 
     
       
